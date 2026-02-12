@@ -1,0 +1,42 @@
+{
+  "name": "ux-ui-mastery",
+  "display_name": "UX/UI Mastery",
+  "version": "3.0.0",
+  "description": "The definitive UX/UI design mastery plugin for Claude Code. 19 skills, 55 references, 10 commands, 300K+ words of expert design knowledge. Build production components, audit cognitive load, critique designs, and ship Figma-to-code — all grounded in cognitive psychology, NNG heuristics, and cutting-edge 2025-2026 research.",
+  "author": "Design Tribe Republic",
+  "license": "MIT",
+  "keywords": [
+    "ux",
+    "ui",
+    "design",
+    "usability",
+    "accessibility",
+    "wcag",
+    "design-system",
+    "figma",
+    "react",
+    "swiftui",
+    "css",
+    "cognitive-psychology",
+    "heuristics",
+    "mobile",
+    "desktop",
+    "ai-ux",
+    "design-tokens",
+    "motion-design",
+    "i18n",
+    "design-critique"
+  ],
+  "categories": [
+    "design",
+    "development",
+    "accessibility",
+    "ai"
+  ],
+  "stats": {
+    "skills": 19,
+    "references": 55,
+    "commands": 10,
+    "words": "300K+"
+  }
+}
