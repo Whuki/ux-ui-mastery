@@ -36,47 +36,106 @@ This plugin gives Claude Code the equivalent of a senior UX designer's entire ca
 
 ## Installation
 
-### Option 1: Quick Install (Recommended)
+### Prerequisites
+
+- [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) installed and authenticated
+- No other dependencies — the plugin is pure markdown, zero config
+
+---
+
+### Method 1: Install from GitHub Marketplace (Recommended for End Users)
+
+This is the standard way to install Claude Code plugins. Run these commands **inside a Claude Code session**:
+
+```
+/plugin marketplace add YOUR_USERNAME/ux-ui-mastery
+/plugin install ux-ui-mastery@ux-ui-mastery-marketplace
+```
+
+That's it. The plugin is now permanently installed and available in every session.
+
+To choose installation scope:
+- **User scope** (all projects): Plugin is registered in `~/.claude/settings.json`
+- **Project scope** (team-shared): Plugin is registered in `.claude/settings.json` in your project
+- **Local scope** (personal, gitignored): Plugin is registered in `.claude/settings.local.json`
+
+---
+
+### Method 2: Clone + Load Directly (For Development / Testing)
+
+Clone the repo anywhere, then load it with the `--plugin-dir` flag:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/ux-ui-mastery.git
+claude --plugin-dir ./ux-ui-mastery
+```
+
+This loads the plugin for that session only. Great for testing or development.
+
+---
+
+### Method 3: Clone + Register Permanently (Manual)
+
+**Step 1:** Clone into the plugins directory:
 
 ```bash
 mkdir -p ~/.claude/plugins
-cp -r ux-ui-mastery ~/.claude/plugins/
-```
-
-The plugin is automatically discovered by Claude Code from `~/.claude/plugins/`.
-
-### Option 2: Install from Git
-
-```bash
 cd ~/.claude/plugins
 git clone https://github.com/YOUR_USERNAME/ux-ui-mastery.git
 ```
 
-### Option 3: Already in Place
+**Step 2:** Register the plugin in your Claude Code settings. Edit `~/.claude/settings.json`:
 
-If the plugin already lives at `~/.claude/plugins/ux-ui-mastery/`, you're done. Claude Code auto-discovers it.
-
-### Verify It Works
-
-Start Claude Code and run any command:
-
-```bash
-claude
+```json
+{
+  "enabledPlugins": {
+    "ux-ui-mastery": true
+  }
+}
 ```
 
-Then try:
+**Step 3:** Restart Claude Code. The plugin loads automatically every session.
+
+---
+
+### Verify Installation
+
+Start Claude Code and run any slash command:
+
 ```
 /ux-audit
 /cognitive-check
 /component-build
+/design-critique
+/figma-to-code
 ```
 
-Or just ask about any trigger topic — "cognitive load", "Fitts's Law", "design tokens", "Gestalt principles" — and the relevant skill loads automatically.
+Commands appear as `/ux-ui-mastery:command-name` (e.g., `/ux-ui-mastery:ux-audit`).
+
+You can also test skill activation by asking about any trigger topic:
+
+```
+"What does Fitts's Law say about button sizing?"
+"Audit this component for cognitive load"
+"Build me a React modal with all states"
+"What went wrong with the Snapchat 2018 redesign?"
+```
+
+The relevant skill and deep references load automatically based on your query.
+
+### Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| Commands not showing up | Restart Claude Code after installation |
+| `/plugin` command not recognized | Update Claude Code to the latest version |
+| Skills not activating on topics | Verify `plugin.json` exists at `.claude-plugin/plugin.json` |
+| Want to uninstall | Run `/plugin uninstall ux-ui-mastery` or remove from `settings.json` |
 
 ### Requirements
 
 - Claude Code CLI (latest version)
-- No external dependencies — pure markdown, zero config
+- No external dependencies — pure markdown, zero config, works offline
 
 ---
 
